@@ -1,0 +1,31 @@
+export const MUTUAL_TUTORS_DATA = {
+    male: [
+        { id: "m1", name: "Edwin Lozano" },
+        { id: "m2", name: "Roberto Carrasco" },
+        { id: "m3", name: "Sergio Q." },
+        { id: "m4", name: "Alejandro Adio" },
+        { id: "m5", name: "César Marín" },
+        { id: "m6", name: "Enrique" },
+        { id: "m7", name: "Iván" },
+        { id: "m8", name: "Rammar Flores" },
+        { id: "m9", name: "Vicente" },
+        { id: "m10", name: "Giovanni Castro" },
+    ],
+    female: [
+        { id: "f1", name: "Fabiola Rangel" },
+        { id: "f2", name: "Carla Iturrieta" },
+        { id: "f3", name: "Jacqueline Obando" },
+        { id: "f4", name: "Jaqueline Pacheco" },
+        { id: "f5", name: "Jazmín Orrego" },
+        { id: "f6", name: "Rosa Navarro" },
+        { id: "f7", name: "Yadi Jimenez" },
+        { id: "f8", name: "Mónica Torres" },
+        { id: "f9", name: "Yasna" },
+        { id: "f10", name: "Yannina Coloma" },
+        { id: "f11", name: "Lissette" },
+        { id: "f12", name: "Maggi Leyton" },
+        { id: "f13", name: "Raquel Reyes" },
+        { id: "f14", name: "Andrea Cerda" },
+        { id: "f15", name: "Silvia" },
+    ]
+};

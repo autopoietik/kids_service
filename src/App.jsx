@@ -8,7 +8,8 @@ import {
   writeBatch,
   getDocs,
   query,
-  orderBy
+  orderBy,
+  getDoc
 } from 'firebase/firestore';
 import { db } from './firebase';
 import Identification from './components/views/Identification';
@@ -92,6 +93,35 @@ function App() {
     }
   };
 
+  const handleSyncNewChildren = async () => {
+    if (!window.confirm("¿Deseas sincronizar los nuevos niños a la base de datos? Esto NO borrará asignaciones existentes.")) return;
+
+    try {
+      setLoading(true);
+      let addedCount = 0;
+
+      for (const child of CHILDREN_DATA) {
+        const docRef = doc(db, "children", String(child.id));
+        const docSnap = await getDoc(docRef);
+
+        if (!docSnap.exists()) {
+          await setDoc(docRef, {
+            ...child,
+            selectedBy: null
+          });
+          addedCount++;
+        }
+      }
+
+      setLoading(false);
+      alert(`Proceso finalizado. Se agregaron ${addedCount} niños nuevos.`);
+    } catch (error) {
+      console.error("Error syncing children:", error);
+      setLoading(false);
+      alert("Hubo un error al sincronizar los nuevos registros.");
+    }
+  };
+
   const handleResetCycle = async () => {
     const input = window.prompt("PELIGRO: Esto borrará todas las asignaciones.\n\nPara confirmar, escriba la palabra: AMOR");
 
@@ -162,6 +192,7 @@ function App() {
             childrenList={childrenList}
             onSelectChild={handleSelectChild}
             onResetCycle={handleResetCycle}
+            onSync={handleSyncNewChildren}
           />
         )}
       </main>

@@ -4,7 +4,7 @@ import ConfirmationModal from '../ui/ConfirmationModal';
 import { Filter, FileText } from 'lucide-react';
 import jsPDF from 'jspdf';
 
-export default function Selection({ currentUser, childrenList, onSelectChild, onResetCycle }) {
+export default function Selection({ currentUser, childrenList, onSelectChild, onResetCycle, onSync }) {
     const [activeFilter, setActiveFilter] = useState('todos'); // todos, bebes, ninos, grandes
     const [selectedChildForModal, setSelectedChildForModal] = useState(null);
 
@@ -152,6 +152,13 @@ export default function Selection({ currentUser, childrenList, onSelectChild, on
                 >
                     <FileText size={24} />
                     📄 Descargar PDF
+                </button>
+
+                <button
+                    onClick={onSync}
+                    className="flex items-center gap-3 bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-10 rounded-xl shadow-xl text-xl transition-transform active:scale-95"
+                >
+                    ☁️ Sincronizar Nuevos
                 </button>
 
                 <button

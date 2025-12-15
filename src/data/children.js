@@ -16,7 +16,7 @@ export const CHILDREN_DATA = [
     { "id": 15, "ministry": "Jacqueline Obando", "name": "Analia Fernández", "age": 5, "selectedBy": null },
     { "id": 16, "ministry": "Jacqueline Obando", "name": "Isabel Finol", "age": 7, "selectedBy": null },
     { "id": 17, "ministry": "Jacqueline Obando", "name": "Isaac Finol", "age": 8, "selectedBy": null },
-    { "id": 18, "ministry": "Jacqueline Obando", "name": "Isabella Paredes", "age": 8, "selectedBy": null },
+    { "id": 18, "ministry": "Jacqueline Obando", "name": "Isabella Paredes", "age": 0.7, "selectedBy": null },
     { "id": 19, "ministry": "Jacqueline Obando", "name": "Lilibeth Villalobos", "age": 10, "selectedBy": null },
     { "id": 20, "ministry": "Jacqueline Obando", "name": "Liam Gabriel", "age": 1, "selectedBy": null },
     { "id": 21, "ministry": "Jacqueline Obando", "name": "Aaron yesua", "age": 10, "selectedBy": null },

@@ -129,11 +129,11 @@ function App() {
       setLoading(true);
       const batch = writeBatch(db);
 
-      // IDs to correct: 12 (Hannah) and 50 (Jana)
-      // We set them to 0.8 explicitly.
+      // IDs to correct: 12 (Hannah), 50 (Jana), and 18 (Isabella Paredes)
       const updates = [
         { id: 12, age: 0.8 },
-        { id: 50, age: 0.8 }
+        { id: 50, age: 0.8 },
+        { id: 18, age: 0.7 }
       ];
 
       for (const item of updates) {

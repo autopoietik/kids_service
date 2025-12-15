@@ -59,4 +59,5 @@ export const CHILDREN_DATA = [
     { "id": 58, "ministry": "Yannina Coloma", "name": "Julieta", "age": 8.0, "selectedBy": null },
     { "id": 59, "ministry": "Roberto Carrasco", "name": "Emiliano Alarcón", "age": 4.0, "selectedBy": null },
     { "id": 60, "ministry": "Roberto Carrasco", "name": "Renato arriagada", "age": 6.0, "selectedBy": null },
+    { "id": 61, "ministry": "Niños", "name": "Lucas Farias", "age": 3, "selectedBy": null },
 ];

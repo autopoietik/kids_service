@@ -122,6 +122,58 @@ function App() {
     }
   };
 
+  const handleCorrectAges = async () => {
+    if (!window.confirm("¿Deseas corregir las edades en la base de datos (IDs 12 y 50)?")) return;
+
+    try {
+      setLoading(true);
+      const batch = writeBatch(db);
+
+      // IDs to correct: 12 (Hannah) and 50 (Jana)
+      // We set them to 0.8 explicitly.
+      const updates = [
+        { id: 12, age: 0.8 },
+        { id: 50, age: 0.8 }
+      ];
+
+      for (const item of updates) {
+        const docRef = doc(db, "children", String(item.id));
+        // We only update the age field
+        batch.update(docRef, { age: item.age });
+      }
+
+      await batch.commit();
+      setLoading(false);
+      alert("Edades corregidas exitosamente en Firestore.");
+    } catch (error) {
+      console.error("Error correcting ages:", error);
+      setLoading(false);
+      alert("Error al corregir edades.");
+    }
+  };
+
+  const handleDeselectChild = async (child) => {
+    // Confirmation dialog
+    if (!window.confirm(`¿Estás seguro de que quieres LIBERAR el cupo de ${child.name}?`)) return;
+
+    try {
+      setLoading(true);
+      const childRef = doc(db, "children", String(child.id));
+
+      await updateDoc(childRef, {
+        selectedBy: null
+      });
+
+      setLoading(false);
+      // Toast or simple alert
+      alert("Cupo liberado correctamente.");
+    } catch (error) {
+      console.error("Error deselecting child:", error);
+      setLoading(false);
+      alert("Error al liberar el cupo.");
+    }
+  };
+
   const handleResetCycle = async () => {
     const input = window.prompt("PELIGRO: Esto borrará todas las asignaciones.\n\nPara confirmar, escriba la palabra: AMOR");
 
@@ -191,8 +243,10 @@ function App() {
             currentUser={currentUser}
             childrenList={childrenList}
             onSelectChild={handleSelectChild}
+            onDeselectChild={handleDeselectChild}
             onResetCycle={handleResetCycle}
             onSync={handleSyncNewChildren}
+            onCorrectAges={handleCorrectAges}
           />
         )}
       </main>

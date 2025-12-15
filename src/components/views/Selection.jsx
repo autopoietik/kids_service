@@ -4,7 +4,7 @@ import ConfirmationModal from '../ui/ConfirmationModal';
 import { Filter, FileText } from 'lucide-react';
 import jsPDF from 'jspdf';
 
-export default function Selection({ currentUser, childrenList, onSelectChild, onResetCycle, onSync }) {
+export default function Selection({ currentUser, childrenList, onSelectChild, onDeselectChild, onResetCycle, onSync, onCorrectAges }) {
     const [activeFilter, setActiveFilter] = useState('todos'); // todos, bebes, ninos, grandes
     const [selectedChildForModal, setSelectedChildForModal] = useState(null);
 
@@ -139,6 +139,7 @@ export default function Selection({ currentUser, childrenList, onSelectChild, on
                             key={child.id}
                             child={child}
                             onSelect={handleSelectClick}
+                            onDeselect={onDeselectChild}
                         />
                     ))}
                 </div>
@@ -159,6 +160,13 @@ export default function Selection({ currentUser, childrenList, onSelectChild, on
                     className="flex items-center gap-3 bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-10 rounded-xl shadow-xl text-xl transition-transform active:scale-95"
                 >
                     ☁️ Sincronizar Nuevos
+                </button>
+
+                <button
+                    onClick={onCorrectAges}
+                    className="flex items-center gap-3 bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-10 rounded-xl shadow-xl text-xl transition-transform active:scale-95"
+                >
+                    🛠️ Corregir Edades
                 </button>
 
                 <button

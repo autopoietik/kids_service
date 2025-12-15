@@ -2,13 +2,14 @@ import { User, Calendar, Heart } from 'lucide-react';
 
 const formatAge = (age) => {
     if (age < 1) {
+        // Rounding to nearest month. 0.8 * 12 = 9.6 -> 10 months
         const months = Math.round(age * 12);
         return `${months} meses`;
     }
     return `${age} años`;
 };
 
-export default function ChildCard({ child, onSelect }) {
+export default function ChildCard({ child, onSelect, onDeselect }) {
     const isSelected = child.selectedBy !== null;
 
     return (
@@ -57,14 +58,19 @@ export default function ChildCard({ child, onSelect }) {
                 {/* Action Button */}
                 <div>
                     {isSelected ? (
-                        <button
-                            disabled
-                            className="w-full bg-gray-200 text-gray-500 font-bold py-4 rounded-xl cursor-not-allowed border-2 border-gray-300"
-                        >
-                            Elegido por:
-                            <br />
-                            {child.selectedBy}
-                        </button>
+                        <div className="space-y-2">
+                            <div className="w-full bg-gray-200 text-gray-600 font-bold py-3 rounded-xl border-2 border-gray-300 text-sm">
+                                Elegido por:
+                                <br />
+                                <span className="text-brand-blue text-base">{child.selectedBy}</span>
+                            </div>
+                            <button
+                                onClick={() => onDeselect(child)}
+                                className="w-full bg-white hover:bg-red-50 text-red-500 border-2 border-red-200 hover:border-red-400 font-bold py-2 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
+                            >
+                                🔓 Liberar Cupo
+                            </button>
+                        </div>
                     ) : (
                         <button
                             onClick={() => onSelect(child)}

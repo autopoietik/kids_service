@@ -10,6 +10,8 @@ export const MUTUAL_TUTORS_DATA = {
         { id: "m8", name: "Rammar Flores" },
         { id: "m9", name: "Vicente" },
         { id: "m10", name: "Giovanni Castro" },
+        { id: "m11", name: "Diego Bravo" },
+        { id: "m12", name: "Francisco Aguilar" },
     ],
     female: [
         { id: "f1", name: "Fabiola Rangel" },
